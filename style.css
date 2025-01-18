@@ -1,0 +1,231 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    text-align: center;
+    max-width: 700px;
+    padding: 20px;
+    background-color: #333333;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Headings */
+h1 {
+    color: #007acc;
+    margin-bottom: 10px;
+}
+
+h4 {
+    color: #cccccc;
+}
+
+h2, h3 {
+    color: #ffffff;
+    margin: 10px 0;
+}
+
+h3 {
+    color: #ffffff;
+}
+
+/* Select, Input, and Button */
+select, input[type="text"], button {
+    width: 60%;
+    max-width: 280px;
+    padding: 12px;
+    font-size: 1em;
+    margin: 10px 5px;
+    border: 1px solid #007acc;
+    background-color: #444444;
+    color: #ffffff;
+    border-radius: 5px;
+    transition: background-color 0.4s ease, border-color 0.3s ease;
+}
+
+input[type="text"]:focus, select:focus {
+    background-color: #555555;
+    border-color: #005fa3;
+    outline: none;
+}
+
+button {
+    background-color: #007acc;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+button:hover {
+    background-color: #005fa3;
+    transform: scale(1.05);
+}
+
+/* Table Container */
+.table-container {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #555555;
+    border-radius: 10px;
+    opacity: 0;
+    animation: fadeInSlide 0.8s ease forwards;
+}
+
+table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+    color: #ffffff;
+    padding-bottom: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #007acc;
+}
+
+th {
+    background-color: #007acc;
+    color: #ffffff;
+}
+
+td {
+    background-color: #444444;
+}
+
+td:hover {
+    background-color: #555555;
+}
+
+p{
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+
+/* Links */
+a {
+    color: #007acc;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+
+a:hover {
+    color: #005fa3;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+img{
+    width: 625px;
+}
+
+/* Fullscreen logo container */
+#logo-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: flashFadeOut 3s ease forwards;
+}
+
+#logo-animation img {
+    width: 600px;
+    height: auto;
+    opacity: 0;
+    animation: logoFlash 1.5s ease forwards;
+}
+
+/* Main content hidden initially */
+.container {
+    opacity: 0;
+    animation: fadeInContent 2s ease forwards 2.5s;
+}
+
+/* Flash animation */
+@keyframes logoFlash {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Fade out animation */
+@keyframes flashFadeOut {
+    0%, 80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+/* Fade-in for main content */
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
