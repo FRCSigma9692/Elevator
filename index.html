@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9692's Elevator Dimension Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script src="script.js"></script>
+    
+    <!--Animation for the logo-->
+    <div id="logo-animation">
+        <img src="frcsigma9692logo.png" alt="Sigma 9692 Logo">
+    </div>
+
+
+    <div class="container">
+        <h1>9692's Elevator Dimension Calculator</h1>
+        <h4>All Dimensions are in Inches</h4>
+        <h2>Choose the elevator model to see the dimensions</h2>
+        
+        <!-- Dropdown for Elevator Model Selection -->
+        <!--<input type="text" id="userPrompt" placeholder="Enter Elevator Model" />-->
+        <select id="userPrompt" placeholder="Enter Elevator Model" >
+            <option value="tssk">Thrifty Single Stage Kit</option>
+            <option value="t2sk">Thrifty 2 Stage Kit</option>
+            <option value="wss">WCP Greyt Cascade Single Stage</option>
+            <option value="wds">WCP Greyt Cascade Double Stage</option>
+            <option value="wts">WCP Greyt Cascade Triple Stage</option>
+            <option value="a1e">AndyMark Single Stage Elevator</option>
+            <option value="a2e">AndyMark Double Stage Elevator</option>
+        </select>
+        <button onclick="showDimensions()">Show Dimensions</button>
+
+        <!-- ThriftyBot Single Stage -->
+        <div id="ts" class="table-container">
+            <h3>Thrifty Single Stage Elevator Kit</h3>
+            <a href="https://www.thethriftybot.com/products/thrifty-elevator-stage-kit?variant=45951434129707" target="_blank">Product Page</a>
+            <table>
+                <tr><td colspan="2"><img src="ts.png" alt="Thrifty single stage"></td></tr>
+                <tr><td>Enter Base Pipe Length (Part A):</td><td><input type="text" id="tsa"></td></tr>
+                <tr><td>Enter Base Stage Height (Part B):</td><td><input type="text" id="tsb"></td></tr>
+                <tr><td colspan="2"><button onClick="calculate_ts()">Calculate Results</button></td></tr>
+                <tr><td>Part C:</td><td><p id="tsc"></p></td></tr>
+                <tr><td>Part D:</td><td><p id="tsd"></p></td></tr>
+                <tr><td>Maximum Extension</td><td><p id="tsmaxext"></p></td></tr>
+                <tr><td>Total Inches Needed</td><td><p id="tstotal"></p></td></tr>
+            </table>
+        <p class="note">The 0.5 inch gaps are for the ball bearings</p>
+        </div>
+
+        <!-- ThriftyBot Two Stage -->
+        <div id="t2" class="table-container">
+            <h3>Thrifty 2 Stage Elevator Kit</h3>
+            <a href="https://www.thethriftybot.com/products/thrifty-elevator-stage-kit?variant=45951434162475" target="_blank">Product Page</a>
+            <table>
+                <tr><td colspan="2"><img src="t2.png" alt="Thrifty 2 stage elevator"></td></tr>
+                <tr><td>Enter Width of Elevator (x):</td><td><input type="text" id="t2a"></td></tr>
+                <tr><td>Enter Base Stage Height (Part B):</td><td><input type="text" id="t2b"></td></tr>
+                <tr><td>Enter Box Pipe Height (Part E)*:</td><td><input type="text" id="t2e"></td></tr>
+                <tr><td colspan="2"><button onClick="calculate_t2()">Calculate Results</button></td></tr>
+                <tr><td>Part C:</td><td><p id="t2c"></p></td></tr>
+                <tr><td>Part D:</td><td><p id="t2d"></p></td></tr>
+                <tr><td>Part F:</td><td><p id="t2f"></p></td></tr>
+                <tr><td>Maximum Extension</td><td><p id="t2maxext"></p></td></tr>
+                <tr><td>Total Inches Needed</td><td><p id="t2total"></p></td></tr>
+            </table>
+            <p class="note">The height for Part E can vary based on your usage but it has to be 3 inches lesser than part B
+              <br>
+              <br>  
+              The 0.5 inch gaps are for the ball bearings</p>
+        </div>
+
+        <!-- WCP Greyt Cascade Single-->
+        <div id="wcp1" class="table-container">
+            <h3>WCP Greyt Cascade Single Stage Elevator</h3>
+            <a href="https://wcproducts.com/products/greyt-cascade-elevator?pr_prod_strat=pinned&pr_rec_id=c9b4920a3&pr_rec_pid=7834463174868&pr_ref_pid=5605212881056&pr_seq=uniform" target="_blank">Product Page</a>
+            <table>
+                <tr><td colspan="2"><img src="wcp1.png" alt="WCP Single Stage" style="height: 625px;"></td></tr>
+                <tr><td>Enter Part A:</td><td><input type="text" id="wcp1A"></td></tr>
+                <tr><td>Enter Part B:</td><td><input type="text" id="wcp1B"></td></tr>
+                <tr><td>Enter Part C:</td><td><input type="text" id="wcp1C"></td></tr>
+                <tr><td colspan="2"><button onClick="calculate_wcp1()">Calculate Results</button></td></tr>
+                <tr><td>Pipe Length D:</td><td><p id="wcp1D"></p></td></tr>
+                <tr><td>Maximum Extension</td><td><p id="wcp1MaxExt"></p></td></tr>
+                <tr><td>Total Inches Needed</td><td><p id="wcp1Total"></p></td></tr>
+            </table>
+        </div>
+          <!-- WCP Greyt Cascade Double -->
+          <div id="wcp2" class="table-container">
+                <h3>WCP Greyt Cascade Double Stage Elevator</h3>
+                <a href="https://wcproducts.com/products/greyt-cascade-elevator?pr_prod_strat=pinned&pr_rec_id=c9b4920a3&pr_rec_pid=7834463174868&pr_ref_pid=5605212881056&pr_seq=uniform" target="_blank">Product Page</a>
+                <table>
+                    <tr><td colspan="2"><img src="wcp2.png" alt="WCP Single Stage" style="height: 625px;"></td></tr>
+                    <tr><td>Enter Part A:</td><td><input type="text" id="wcp2A"></td></tr>
+                    <tr><td>Enter Desired Extended Height:</td><td><input type="text" id="wcp2X"></td></tr>
+                    <tr><td>Pipe Length C:</td><td><input type="text" id="wcp2C"></td></tr>
+                    <tr><td>Pipe Length E:</td><td><input type="text" id="wcp2E"></td></tr>
+                    <tr><td colspan="2"><button onClick="calculate_wcp2()">Calculate Results</button></td></tr>
+                    <tr><td>Pipe Length B:</td><td><p id="wcp2B"></p></td></tr>
+                    <tr><td>Pipe Length D:</td><td><p id="wcp2D"></p></td></tr>
+                    <tr><td>Pipe Length F:</td><td><p id="wcp2F"></p></td></tr>
+                    <tr><td>Maximum Extension</td><td><p id="wcp2MaxExt"></p></td></tr>
+                    <tr><td>Total Inches Needed</td><td><p id="wcp2Total"></p></td></tr>
+                </table>
+            </div>
+          <!-- WCP Greyt Cascade Triple -->
+          <div id="wcp3" class="table-container">
+            <h3>WCP Greyt Cascade Triple Stage Elevator</h3>
+            <a href="https://wcproducts.com/products/greyt-cascade-elevator?pr_prod_strat=pinned&pr_rec_id=c9b4920a3&pr_rec_pid=7834463174868&pr_ref_pid=5605212881056&pr_seq=uniform" target="_blank">Product Page</a>
+            <table>
+                <tr><td colspan="2"><img src="wcp3.png" alt="WCP Single Stage" style="height: 625px;"></td></tr>
+                <tr><td>Enter Part A:</td><td><input type="text" id="wcp3A"></td></tr>
+                <tr><td>Enter Desired Extended Height:</td><td><input type="text" id="wcp3X"></td></tr>
+                <tr><td>Enter Part B:</td><td><input type="text" id="wcp3B"></td></tr>
+                <tr><td>Enter Part C:</td><td><input type="text" id="wcp3C"></td></tr>
+                <tr><td>Enter Part F:</td><td><input type="text" id="wcp3F"></td></tr>
+                <tr><td colspan="2"><button onClick="calculate_wcp3()">Calculate Results</button></td></tr>
+                <tr><td>Pipe Length D:</td><td><p id="wcp3D"></p></td></tr>
+                <tr><td>Pipe Length E:</td><td><p id="wcp3E"></p></td></tr>
+                <tr><td>Pipe Length G:</td><td><p id="wcp3G"></p></td></tr>
+                <tr><td>Pipe Length H:</td><td><p id="wcp3H"></p></td></tr>
+                <tr><td>Maximum Extension</td><td><p id="wcp3MaxExt"></p></td></tr>
+                <tr><td>Total Inches Needed</td><td><p id="wcp3Total"></p></td></tr>
+            </table>
+        </div>
+   
+        <!-- AndyMark Single Elevator -->
+        <div id="am1" class="table-container">
+            <h3>AndyMark Single Stage Elevator</h3>
+            <a href="https://www.andymark.com/products/elevator-bearings-and-structure-kits?sku=am-4878" target="_blank">Product Page</a>
+            <table>
+                <tr><td colspan="2"><img src="am1.png" alt="Andy Mark Single Stage" style="height: 625px;"></td></tr>
+                <tr><td>Enter Part A:</td><td><input type="text" id="am1A"></td></tr>
+                <tr><td>Enter Part C:</td><td><input type="text" id="am1C"></td></tr>
+                <tr><td>Enter Part D:</td><td><input type="text" id="am1D"></td></tr>
+                <tr><td colspan="2"><button onClick="calculate_am1()">Calculate Results</button></td></tr>
+                <tr><td>Pipe Length B:</td><td><p id="am1B"></p></td></tr>
+                <tr><td>Maximum Extension</td><td><p id="am1MaxExt"></p></td></tr>
+                <tr><td>Total Inches Needed</td><td><p id="am1Total"></p></td></tr>
+            </table>
+        </div>
+        <!-- AndyMark Double Elevator -->
+        <div id="am2" class="table-container">
+          <h3>AndyMark Double Stage Elevator</h3>
+          <a href="https://www.andymark.com/products/elevator-bearings-and-structure-kits?sku=am-4878" target="_blank">Product Page</a>
+          <table>
+            <tr><td colspan="2"><img src="am2.png" alt="Andy Mark Single Stage" style="height: 625px;"></td></tr>
+              <tr><td>Enter Part A:</td><td><input type="text" id="am2A"></td></tr>
+              <tr><td>Enter Part G:</td><td><input type="text" id="am2G"></td></tr>
+              <tr><td>Enter Part F:</td><td><input type="text" id="am2F"></td></tr>
+              <tr><td>Enter Desired Extended Height:</td><td><input type="text" id="am2X"></td></tr>
+              <tr><td colspan="2"><button onClick="calculate_am2()">Calculate Results</button></td></tr>
+              <tr><td>Pipe Length C:</td><td><p id="am2C"></p></td></tr>
+              <tr><td>Pipe Length D:</td><td><p id="am2D"></p></td></tr>
+              <tr><td>Maximum Extension</td><td><p id="am2MaxExt"></p></td></tr>
+              <tr><td>Total Inches Needed</td><td><p id="am2Total"></p></td></tr>
+          </table>
+          <p class="note">Part G and Part A are attached by a 90 degree bracket provided in kit</p>
+      </div>
+</div>
+    
+
+</body>
+</html>
