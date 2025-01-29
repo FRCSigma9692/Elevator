@@ -20,7 +20,7 @@ function calculate_t2() {
       var tsb = document.getElementById("tsb").value*1;
       document.getElementById("tsc").innerHTML = tsa-4;
       document.getElementById("tsd").innerHTML = tsa-9;
-      document.getElementById("tsmaxext").innerHTML = (tsb * 2) - 0.5;
+      document.getElementById("tsmaxext").innerHTML = (tsb * 2) - 7;
       document.getElementById("tstotal").innerHTML = (4 * tsb) + tsa + (tsa-4) + (2*(tsa-9));
 
   }
