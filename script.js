@@ -96,6 +96,8 @@ function calculate_t2() {
    var am2d = am2g - 2;
    var am2e = am2g - 4.75;
    var am2c = am2g + 2.75;
+   document.getElementById("am2C").innerHTML = am2c;
+   document.getElementById("am2D").innerHTML = am2d;
    document.getElementById("am2MaxExt").innerHTML = am2x;
    document.getElementById("am2Total").innerHTML = am2g + (2*am2a) + (2*am2b) + am2c + (2*am2d) + (2*am2e) + (am2f*2);
 
